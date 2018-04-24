@@ -17,7 +17,7 @@ module.exports = function (config) {
       'node_modules/lodash/lodash.min.js',
       'node_modules/babel-polyfill/dist/polyfill.js',
       'data/data.ts',
-      'src/**/*.ts',
+      'src/**/*.ts'
     ],
 
     // https://github.com/angular/angular-cli/issues/2125#issuecomment-247395088
@@ -27,7 +27,6 @@ module.exports = function (config) {
 
     // list of files to exclude
     exclude: [
-      'src/main/*.ts',
       'src/datatypes/*.ts',
       'src/functions/*.ts',
       'src/functions/various/*.ts',

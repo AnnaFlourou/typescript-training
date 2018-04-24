@@ -47,7 +47,7 @@ describe('Template literals', () => {
 
     function tagIt(literalString, ...interpolatedParts) {
       // implement this function to make the test pass
-      return `fixme`
+      // return `fixme` concaténer $literal string dear[0] + $(interpolation + $(literal string[])really + $(interpol...))
     }
   })
 
@@ -56,7 +56,8 @@ describe('Template literals', () => {
     // that will accept following 3 template strings
     // and return a string describing the journey
     let journey;
-
+    // rechercher template string / chainable à une autre
+    // tag function that return tag function
     expect(journey `Warsaw` `Poznan` `Berlin`).toBe('Warsaw, then Poznan and finally Berlin!')
     expect(journey `Poland` `Czech` `Austria`).toBe('Poland, then Czech and finally Austria!')
     expect(journey `Europe` `Asia` `Australia`).toBe('Europe, then Asia and finally Australia!')
