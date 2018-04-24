@@ -86,12 +86,9 @@ describe('class', () => {
     // Create a Rockman class that extends Musician
     // Add play method to Musician
     class Musician {
-      instrument: string;
-      constructor(instrument: string) {
-        this.instrument = 'guitar';
-      }
+      
       play() {
-        return "I'm playing " + this.instrument;
+        return "I'm playing guitar";
       }
     }
     class Rockman extends Musician {
