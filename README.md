@@ -1,6 +1,7 @@
 # typescript-training
 [![Build Status](https://travis-ci.org/AnnaFlourou/typescript-training.svg?branch=exercises-step)](https://travis-ci.org/AnnaFlourou/typescript-training)
 
+
 ## install
 
 Run:
