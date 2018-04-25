@@ -13,6 +13,7 @@
   },
   "include": [
     "src/datatypes/*.ts",
+    "src/params/*.ts",
     "data/**/*.ts",
     "src/lib.ext.ts",
     "src/main/*.ts",
