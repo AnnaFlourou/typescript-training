@@ -1,6 +1,6 @@
-describe('Closures', function(){
+describe('Closures', function () {
 
-	it('can hold private data - incrementer', function(){
+	it('can hold private data - incrementer', function () {
 		// write incrementer function below
 		// each `incrementer` call returns a function which, when called, increments the counter with +1 and returns the new value
 		// the initial value of the counter is 0
@@ -9,6 +9,13 @@ describe('Closures', function(){
 		// define incrementer function here
 		// try to define function signature
 
+		var incrementer = (function () {
+			let cnter = 0;
+			return function () {
+				cnter += 1
+				return cnter
+			}
+		});
 		var inc1 = incrementer();
 		expect(inc1()).toEqual(1);
 		expect(inc1()).toEqual(2);
@@ -20,7 +27,7 @@ describe('Closures', function(){
 		expect(inc2()).toEqual(4);
 	});
 
-	it('can hold private data - counter', function(){
+	it('can hold private data - counter', function () {
 		// write counter function below
 		// each `counter` call returns an object with 2 functions, inc and dec
 		// `inc`, when called, acts as `incrementer` above
@@ -30,7 +37,20 @@ describe('Closures', function(){
 
 		// define counter function here
 		// try to define function signature
-
+		function counter() {
+			let cnter = 0;
+			let _counter = {
+				inc: function () {
+					cnter += 1;
+					return cnter;
+				},
+				dec: function () {
+					cnter -= 1;
+					return cnter;
+				}
+			}
+			return _counter;
+		}
 		var c1 = counter();
 		expect(c1.inc()).toEqual(1);
 		expect(c1.inc()).toEqual(2);
@@ -43,7 +63,7 @@ describe('Closures', function(){
 		expect(c2.dec()).toEqual(-2);
 	});
 
-	it('can encapsulate domain logic', function(){
+	it('can encapsulate domain logic', function () {
 		// write finanseStorage function which will hold information about personal finanseStorage
 		// it will store all incomes and outcomes (numbers),
 		// each separately added via `saveIncome`/`saveOutcome` method.
@@ -51,7 +71,24 @@ describe('Closures', function(){
 
 		// define finanseStorage function here
 		// try to define function signature
-
+		function finanseStorage() {
+			let _saveIncome = 0;
+			let _saveOutcome = 0;
+			let _counter = {
+				saveIncome: function (a) {
+					_saveIncome += a;
+					return _saveIncome;
+				},
+				saveOutcome: function (a) {
+					_saveOutcome += a;
+					return _saveOutcome;
+				},
+				getBalance: function () {
+					return Math.round((_saveIncome - _saveOutcome)*100)/100;
+				}
+			}
+			return _counter;
+		}
 		var f1 = finanseStorage();
 		expect(f1.getBalance()).toEqual(0);
 		f1.saveIncome(1500);

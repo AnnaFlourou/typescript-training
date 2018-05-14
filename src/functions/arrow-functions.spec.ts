@@ -4,8 +4,17 @@ describe('arrow functions', () => {
 		// Write two functions that take two parameters and return their sum
 		// 'fnAdd' - as a regular function
 		// 'arrowAdd' - as an arrow function
+		
+		let fnAdd = function (a, b) {
+			
+		}
 
-		let fnAdd, arrowAdd;
+		let arrowAdd = (a, b) => {
+			a + b;
+		};
+		
+		
+		// let fnAdd, arrowAdd;
 
 		expect(fnAdd.length).toBe(2);
 		expect(arrowAdd.length).toBe(2);
@@ -15,10 +24,18 @@ describe('arrow functions', () => {
 	describe('are great for defining simple calculations', () => {
 		// Write following lambda functions, performing subtraction, multiplication and division
 
-		let arrowSub, arrowMul, arrowDiv;
+		let arrowSub = function (a, b) {
+			return a - b;
+		}
+		let arrowMul = function (a, b) {
+			return a * b;
+		}
+		let arrowDiv = function (a, b) {
+			return a / b;
+		};
 
 		it('subtracts numbers correctly', () => {
-			expect(arrowSub(20, -15)).toEqual(35)
+			expect(arrowSub(20, -15)).toEqual(35);
 			expect(arrowSub.length).toBe(2);
 		})
 
@@ -42,7 +59,20 @@ describe('arrow functions', () => {
 		// 1, for x = 1
 		// fib(x-1) + fib(x-2), for x > 1
 
-		let fnFib, arrowFib;
+		let fnFib = function (x) {
+			if (x < 2) {
+				return x
+			}else {
+				return fnFib(x-1) + fnFib(x-2)
+			}
+		};
+		
+		let arrowFib = (x) => {
+			if (x < 2) {
+			return x
+		}else {
+			return fnFib(x-1) + fnFib(x-2)
+		}};
 
 		[fnFib, arrowFib].forEach(function(fn){
 			expect(fn(0)).toBe(0);
@@ -63,8 +93,8 @@ describe('arrow functions', () => {
 		// One of the functions should become an arrow to allow for 'this' to retain context correctly
 		const person = {
 			name: 'Jarosław',
-			greetFriends: function(friends) {
-				friends.forEach(function(friend) {
+			greetFriends: function(friends) { 
+				friends.forEach((friend) => {
 					console.log(this.name + ' greets to ' + friend)
 				})
 			},
@@ -82,7 +112,10 @@ describe('arrow functions', () => {
 	it('can return objects', () => {
 		// define following as arrow functions
 		// look out for object literal syntax in arrow functions!
-		let makePerson;
+		let makePerson = (first, last) => {
+			return {first: first, last: last}
+		};
+
 
 		expect(makePerson('John', 'Lennon')).toEqual({first: 'John', last: 'Lennon'})
 		expect(makePerson('Paul', 'McCartney')).toEqual({first: 'Paul', last: 'McCartney'})
@@ -92,8 +125,21 @@ describe('arrow functions', () => {
 		// define following functions:
 		// adder as arrow function (it stores first parameter in a closure and return a function accepting second parameter)
 		// add5 and minus10 as `adder` calls (curried functions, they actually accept the second parameter and perform actual add)
-		let adder, add5, minus10;
+		//let adder, add5, minus10;
 
+		let adder = (x) => {
+			return (y) => {
+			}
+		};
+		
+		let add5 = x => {
+			return x + 5;
+		};
+
+
+		let minus10 = x => {
+			return x - 10;
+		}
 		expect(add5(4)).toBe(9)
 		expect(add5(-4)).toBe(1)
 		expect(add5(3.5)).toBe(8.5)
@@ -127,18 +173,18 @@ describe('arrow functions', () => {
 
 		// REPLACE ALL REGULAR FUNCTION WITH ARROW FUNCTIONS
 		const shoppingList = data
-			.filter(/* function(d) {
-				return d.type != 'Clothes'
-			} */) // Remove Clothes
-			.filter(/* function(d) {
+			.filter( d => d.type != 'Clothes')
+
+			.filter( d => d.price < 5)
+				/* function(d) {
 				return	d.price < 5
-			} */) // Find only remaining items with price < 5
-			.sort(/* function(a, b) {
+			} */ // Find only remaining items with price < 5
+			.sort( (a, b) => b.price * b.qty - a.price * a.qty )/* function(a, b) {
 				return b.price * b.qty - a.price * a.qty
-			} */) // Sort by total price, desc
-			.map(/* function(d) {
+			} */ // Sort by total price, desc
+			.map( d => d.name)/* function(d) {
 				return d.name
-			} */) // Pull just the name from each item
+			} */ // Pull just the name from each item
 
 		expect(shoppingList.shift()).toBe('Beer')
 		expect(shoppingList.shift()).toBe('Chips')

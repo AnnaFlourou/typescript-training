@@ -12,6 +12,7 @@
     "inlineSourceMap": true
   },
   "include": [
+    "src/functions/*.ts",
     "src/datatypes/*.ts",
     "src/params/*.ts",
     "data/**/*.ts",
